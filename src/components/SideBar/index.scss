@@ -1,0 +1,68 @@
+.sidebar {
+  width: 90px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, .15);
+  padding: 15px 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid deepskyblue;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: 900;
+    text-decoration: none;
+    color: deepskyblue;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      background: deepskyblue;
+      color: #fff;
+    }
+  }
+
+  .list {
+    padding-top: 15px;
+  }
+
+  .list-item {
+    a {
+      display: block;
+      font-size: 1.4em;
+      color: #999;
+      text-decoration: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+
+      &:not(.-active):hover {
+        background: #999;
+        color: #fff;
+      }
+
+      &.-active {
+        background: cornflowerblue;
+        color: #fff;
+      }
+    }
+  }
+
+  .logout {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6em;
+    font-weight: 500;
+    color: darkslateblue;
+    cursor: pointer;
+    padding: 10px 0;
+  }
+}

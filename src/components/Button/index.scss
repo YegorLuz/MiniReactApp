@@ -1,0 +1,22 @@
+.button {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  border: 1px solid cornflowerblue;
+  border-radius: 20px;
+  outline: none;
+  min-width: 200px;
+  cursor: pointer;
+  color: cornflowerblue;
+  font-weight: bold;
+  background: #fff;
+  text-transform: uppercase;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background: cornflowerblue;
+    color: #fff;
+  }
+}
