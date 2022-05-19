@@ -26,10 +26,13 @@ then
 
 #### User
 login: user
+
 password: 123
+
 
 #### Admin
 login: admin
+
 password: 12345
 
 ## Enjoy
