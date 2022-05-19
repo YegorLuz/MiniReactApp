@@ -16,11 +16,31 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="users" element={<UserList />} />
-            <Route path="login" element={<Login />} />
-            <Route path="*" element={<NotFound />} />
+            <Route index element={
+              <React.Suspense fallback={<>Loading...</>}>
+                <Home />
+              </React.Suspense>
+            } />
+            <Route path="about" element={
+              <React.Suspense fallback={<>Loading...</>}>
+                <About />
+              </React.Suspense>
+            } />
+            <Route path="users" element={
+              <React.Suspense fallback={<>Loading...</>}>
+                <UserList />
+              </React.Suspense>
+            } />
+            <Route path="login" element={
+              <React.Suspense fallback={<>Loading...</>}>
+                <Login />
+              </React.Suspense>
+            } />
+            <Route path="*" element={
+              <React.Suspense fallback={<>Loading...</>}>
+                <NotFound />
+              </React.Suspense>
+            } />
           </Route>
         </Routes>
       </Router>

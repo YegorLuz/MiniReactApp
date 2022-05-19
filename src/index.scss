@@ -42,3 +42,12 @@ body {
 ul {
   list-style: none;
 }
+
+.simple-text {
+  font-size: 1.5em;
+  color: #333;
+  padding: 40px 0;
+  p {
+    margin-bottom: 15px;
+  }
+}

@@ -13,3 +13,16 @@ export const requestFailure = (error: ErrorType) => ({
   type: commonConstants.requestFailure,
   payload: error,
 });
+
+export const getText = () => ({
+  type: commonConstants.getText,
+});
+
+export const saveText = (text: string) => ({
+  type: commonConstants.saveText,
+  payload: text,
+});
+
+export const verify = () => ({
+  type: commonConstants.verify,
+});

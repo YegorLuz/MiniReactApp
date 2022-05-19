@@ -1,4 +1,5 @@
 import userConstants from '../constants/user';
+import user from '../reducers/user';
 
 export type LoginData = {
   login: string;
@@ -8,7 +9,6 @@ export type LoginData = {
 export type LoginSuccessData = {
   name: string;
   role: string;
-  token: string;
 };
 
 export const login = (login: string, password: string) => ({
@@ -23,4 +23,8 @@ export const loginSuccess = (data: LoginSuccessData) => ({
 
 export const logOut = () => ({
   type: userConstants.logOut,
+});
+
+export const clearUser = () => ({
+  type: userConstants.clearUser,
 });

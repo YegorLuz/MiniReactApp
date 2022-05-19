@@ -1,21 +1,22 @@
 import { createReducer } from '@reduxjs/toolkit';
 import commonConstants from '../constants/common';
 import { Action } from './index';
-import { LoginSuccessData } from '../actions/user';
 
 export type ErrorType = {
   statusCode: number;
   message: string;
 };
 
-type InitialStateType = {
+export type InitialStateType = {
   error: null | ErrorType;
   loading: boolean;
+  text: string;
 };
 
 const initialState: InitialStateType = {
   error: null,
   loading: false,
+  text: '',
 };
 
 export default createReducer(initialState, builder => {
@@ -29,5 +30,8 @@ export default createReducer(initialState, builder => {
     })
     .addCase(commonConstants.requestFailure, (state, action: Action<ErrorType>) => {
       state.error = action.payload;
+    })
+    .addCase(commonConstants.saveText, (state, action: Action<string>) => {
+      state.text = action.payload;
     });
 })

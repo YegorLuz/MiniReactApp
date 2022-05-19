@@ -1,15 +1,33 @@
 import axios, { AxiosResponse } from 'axios';
+import { getData } from '../utils/storage';
 const CancelToken = axios.CancelToken;
 
 const axiosInstance = axios.create({
-  baseURL: 'localhost:3333',
+  baseURL: 'http://localhost:3333',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
 
+const getAuthToken = (accessToken: string) => {
+  return `Bearer ${accessToken}`;
+};
+
+export const getAuthTokenHeader = () => {
+  const access_token = getData('access_token');
+
+  if (access_token) {
+    axiosInstance.defaults.headers.common.Authorization = getAuthToken(
+      access_token,
+    );
+  } else {
+    axiosInstance.defaults.headers.common.Authorization = '';
+  }
+};
+
 const _requestsMap: any = {};
+getAuthTokenHeader();
 
 axiosInstance.interceptors.request.use((request: any) => {
   if (request.cancelKey) {
@@ -37,6 +55,15 @@ const onResponseSuccess = ({ data, config, request }: AxiosResponse<any>) => {
     delete _requestsMap[cancelKey];
   }
   const body = wrapperData ? data.data : data;
+
+  if (
+    !axiosInstance.defaults.headers.common.Authorization &&
+    body.access_token
+  ) {
+    axiosInstance.defaults.headers.common.Authorization = getAuthToken(
+      body.access_token,
+    );
+  }
 
   return Promise.resolve(body);
 };
